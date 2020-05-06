@@ -22,16 +22,11 @@ func getNumbersByStr(s string) []int {
 
 }
 
-// get1Line は標準入力された値1行を、文字列にして取得する。複数の実行で2行目、3行目と取得可能。
-func get1Line() string {
+// getNextLine は標準入力された値を1行単位で文字列にして取得する。複数の実行で2行目、3行目と取得可能。
+func getNextLine() string {
 
 	sc := bufio.NewScanner(os.Stdin)
-	s := ""
-
-	if sc.Scan() {
-		s = sc.Text()
-	}
-
-	return s
+	sc.Scan()
+	return sc.Text()
 
 }
