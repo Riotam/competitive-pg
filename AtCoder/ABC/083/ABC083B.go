@@ -1,13 +1,33 @@
-package util
+package main
 
 import (
 	"bufio"
+	"fmt"
 	"os"
 	"strconv"
 	"strings"
 )
 
-// getNumbersByStr はスペース区切りの文字列を、数値のスライスに変換して返す。
+func main() {
+
+	inputStr := getNextLine()
+	inputNumbers := getNumbersByStr(inputStr)
+
+	res := 0
+	for i := 1; i <= inputNumbers[0]; i++ {
+
+		number := sumDigits(i)
+
+		if inputNumbers[1] <= number && number <= inputNumbers[2] {
+			res += i
+		}
+
+	}
+
+	fmt.Println(res)
+
+}
+
 func getNumbersByStr(s string) []int {
 
 	var n []int
@@ -22,7 +42,6 @@ func getNumbersByStr(s string) []int {
 
 }
 
-// getNextLine は標準入力された値を1行単位で文字列にして取得する。複数の実行で2行目、3行目と取得可能。
 func getNextLine() string {
 
 	sc := bufio.NewScanner(os.Stdin)
@@ -31,18 +50,13 @@ func getNextLine() string {
 
 }
 
-// sumDigits は与えられた数値の各桁の和を求めて返す。
 func sumDigits(number int) int {
-
 	remainder := 0
 	sumResult := 0
-
 	for number != 0 {
 		remainder = number % 10
 		sumResult += remainder
 		number = number / 10
 	}
-
 	return sumResult
-
 }
