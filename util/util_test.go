@@ -2,6 +2,8 @@ package util
 
 import (
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func Test_getNumbersByStr(t *testing.T) {
@@ -34,4 +36,14 @@ func Test_sumDigits(t *testing.T) {
 		}
 	}
 
+}
+
+func Test_sortDesc(t *testing.T) {
+	target := []int{1, 2, 3, 4, 0}
+	sortDesc(target)
+	want := []int{4, 3, 2, 1, 0}
+
+	if !assert.Equal(t, target, want) {
+		t.Errorf("failed test\ntarget: %v\n  want: %v", target, want)
+	}
 }

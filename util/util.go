@@ -3,6 +3,7 @@ package util
 import (
 	"bufio"
 	"os"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -41,4 +42,10 @@ func sumDigits(number int) int {
 	}
 
 	return sum
+}
+
+// sortDesc は与えられたintのスライスを降順にソートして返す
+func sortDesc(slice []int) []int {
+	sort.Sort(sort.Reverse(sort.IntSlice(slice)))
+	return slice
 }
