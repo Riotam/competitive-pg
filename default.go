@@ -8,6 +8,7 @@ import (
 
 func main() {
 	inputStr := getNextLine()
+	// fmt.Println(inputStr)
 	fmt.Println(checker(inputStr))
 }
 
@@ -17,7 +18,7 @@ func checker(inputStr string) string {
 	// Your code here
 	res := "hoge"
 
-	return fmt.Sprintf("%d", res)
+	return fmt.Sprintf("%v", res)
 }
 
 func getNextLine() string {
