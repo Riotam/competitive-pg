@@ -7,22 +7,31 @@ import (
 )
 
 func main() {
-	inputStr := getNextLine()
-	// fmt.Println(inputStr)
-	fmt.Println(checker(inputStr))
+	lines := getLines(2)
+	fmt.Println(checker(lines))
 }
 
-// use here for unit tests
-func checker(inputStr string) string {
+func checker(lines []string) string {
 
-	// Your code here
-	res := "hoge"
+	s := lines[0]
+	t := lines[1]
 
-	return fmt.Sprintf("%v", res)
+	sLen := len(lines[0])
+
+	if s != t[:sLen] {
+		return "No"
+	}
+
+	return "Yes"
 }
 
-func getNextLine() string {
+func getLines(n int) []string {
+	var lines []string
 	sc := bufio.NewScanner(os.Stdin)
-	sc.Scan()
-	return sc.Text()
+	for i := 0; i < n; i++ {
+		sc.Scan()
+		t := sc.Text()
+		lines = append(lines, t)
+	}
+	return lines
 }

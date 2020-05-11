@@ -4,44 +4,10 @@ import "testing"
 
 func Test_checker(t *testing.T) {
 
-	input1 := "erasedream"
-	got := checker(input1)
-	want := "YES"
-	if want != got {
-		t.Errorf("failed test\n got: %v\nwant: %v", got, want)
-	}
-
-	input2 := "dreameraser"
-	got = checker(input2)
-	want = "YES"
-	if want != got {
-		t.Errorf("failed test\n got: %v\nwant: %v", got, want)
-	}
-
-	input3 := "dreamerer"
-	got = checker(input3)
-	want = "NO"
-	if want != got {
-		t.Errorf("failed test\n got: %v\nwant: %v", got, want)
-	}
-
-	input4 := "eraseraser"
-	got = checker(input4)
-	want = "NO"
-	if want != got {
-		t.Errorf("failed test\n got: %v\nwant: %v", got, want)
-	}
-
-	input5 := "dreamererase"
-	got = checker(input5)
-	want = "YES"
-	if want != got {
-		t.Errorf("failed test\n got: %v\nwant: %v", got, want)
-	}
-
-	input6 := "rase"
-	got = checker(input6)
-	want = "NO"
+	firstLineSliceInt := []int{3, 3, 10}
+	lines := []string{"60 2 2 4", "70 8 7 9", "50 2 3 9"}
+	got := checker(firstLineSliceInt, lines)
+	want := 120
 	if want != got {
 		t.Errorf("failed test\n got: %v\nwant: %v", got, want)
 	}

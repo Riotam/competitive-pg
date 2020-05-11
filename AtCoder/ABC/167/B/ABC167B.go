@@ -1,28 +1,21 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
 )
 
 func main() {
-	inputStr := getNextLine()
-	// fmt.Println(inputStr)
-	fmt.Println(checker(inputStr))
+	var a, b, c, k int
+	fmt.Scanf("%d %d %d %d", &a, &b, &c, &k)
+	fmt.Println(checker(a, b, c, k))
 }
 
-// use here for unit tests
-func checker(inputStr string) string {
+func checker(a int, b int, c int, k int) int {
+	if a > k {
+		return k
+	} else if a+b > k {
+		return a
+	}
 
-	// Your code here
-	res := "hoge"
-
-	return fmt.Sprintf("%v", res)
-}
-
-func getNextLine() string {
-	sc := bufio.NewScanner(os.Stdin)
-	sc.Scan()
-	return sc.Text()
+	return a + (k-(a+b))*(-1)
 }
