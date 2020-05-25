@@ -8,8 +8,6 @@ func main() {
 	fmt.Println(example(6, "a"))
 }
 
-// == ロジックがメインの関数に対してのテスト ==
-
 func example(number int, word string) string {
 
 	if number > 5 {

@@ -14,6 +14,10 @@ func Test_example1(t *testing.T) {
 	got1 := example(int1, word1)
 	want1 := "over five"
 
+	// if got1 != want1 {
+	// 	t.Errorf("failed test\nword: %v\n   got: %v", word1, got1)
+	// }
+
 	if !assert.Equal(t, got1, want1) {
 		t.Errorf("failed test\nword: %v\n   got: %v", word1, got1)
 	}
