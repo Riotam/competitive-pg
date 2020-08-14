@@ -9,36 +9,18 @@ import (
 	"strings"
 )
 
-// getSliceIntByString はスペース区切りの文字列を、数値のスライスに変換して返す。
-func getSliceIntByString(s string) []int {
-	var n []int
-	for _, f := range strings.Fields(s) {
-		i, err := strconv.Atoi(f)
-		if err == nil {
-			n = append(n, i)
+// getDivisorListは与えられた数値の約数をリストにして返す。
+func getDivisorList(target int) (divisorList []int) {
+	for a := 1; a*a <= target; a++ {
+		if target%a != 0 {
+			continue
 		}
-	}
-	return n
-}
+		b := target / a
 
-// getNextLine は標準入力された値を1行単位で文字列にして取得する。複数の実行で2行目、3行目と取得可能。
-// TODO: for文だと1.14では使えない？
-func getNextLine() string {
-	sc := bufio.NewScanner(os.Stdin)
-	sc.Scan()
-	return sc.Text()
-}
-
-// getLines は与えられた数値の回数だけ、標準入力された値を取得する。
-func getLines(n int) []string {
-	var lines []string
-	sc := bufio.NewScanner(os.Stdin)
-	for i := 0; i < n; i++ {
-		sc.Scan()
-		t := sc.Text()
-		lines = append(lines, t)
+		divisorList = append(divisorList, a)
+		divisorList = append(divisorList, b)
 	}
-	return lines
+	return sliceUniqueInt(divisorList)
 }
 
 // getSumDigits は与えられた数値の各桁の和を求めて返す。
@@ -59,6 +41,7 @@ func getSortDesc(slice []int) []int {
 	return slice
 }
 
+// getSliceIntBySliceString は与えられた文字列スライスを数値スライスに変換して返す。
 func getSliceIntBySliceString(strings []string) []int {
 	var numbers []int
 	for _, s := range strings {
@@ -68,6 +51,7 @@ func getSliceIntBySliceString(strings []string) []int {
 	return numbers
 }
 
+// reverseString は与えられた文字列を逆さ文字にして返す。
 func reverseString(s string) string {
 	runes := []rune(s)
 	for i, j := 0, len(runes)-1; i < j; i, j = i+1, j-1 {
@@ -99,6 +83,23 @@ func splitWithoutEmptyN(stringTargeted string, delim string, n int) (stringRetur
 		}
 	}
 
+	return
+}
+
+// splitAndConvertToString はデリミタで分割してstringスライスを取得
+func splitAndConvertToString(stringTargeted, delim string) (stringSlices []string, err error) {
+	// 分割
+	stringSplited := splitWithoutEmpty(stringTargeted, delim)
+
+	// stringスライスに保存
+	for i := range stringSplited {
+		// var iparam string
+		iparam := stringSplited[i]
+		if err != nil {
+			return
+		}
+		stringSlices = append(stringSlices, iparam)
+	}
 	return
 }
 

@@ -25,20 +25,7 @@ func checker(count int, line []string) []string {
 	for _, l := range line {
 
 		lInt, _ := strconv.Atoi(l)
-
-		divisorList := []int{}
-		for a := 1; a*a <= lInt; a++ {
-			if lInt%a != 0 {
-				continue
-			}
-
-			b := lInt / a
-
-			divisorList = append(divisorList, a)
-			divisorList = append(divisorList, b)
-		}
-
-		divisorList = sliceUniqueInt(divisorList)
+		divisorList := getDivisorList(lInt)
 
 		divisorSum := 0
 		for _, divisor := range divisorList {
@@ -58,6 +45,22 @@ func checker(count int, line []string) []string {
 	}
 
 	return resList
+}
+
+func getDivisorList(target int) (divisorList []int) {
+
+	for a := 1; a*a <= target; a++ {
+		if target%a != 0 {
+			continue
+		}
+
+		b := target / a
+
+		divisorList = append(divisorList, a)
+		divisorList = append(divisorList, b)
+	}
+
+	return sliceUniqueInt(divisorList)
 }
 
 func sliceUniqueInt(target []int) (unique []int) {
