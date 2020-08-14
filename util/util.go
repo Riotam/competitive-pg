@@ -53,8 +53,8 @@ func getSumDigits(number int) int {
 	return sum
 }
 
-// setSortDesc は与えられたintのスライスを降順にソートして返す
-func setSortDesc(slice []int) []int {
+// getSortDesc は与えられたintのスライスを降順にソートして返す
+func getSortDesc(slice []int) []int {
 	sort.Sort(sort.Reverse(sort.IntSlice(slice)))
 	return slice
 }
@@ -117,6 +117,34 @@ func splitAndConvertToInt(stringTargeted, delim string) (intSlices []int, err er
 		intSlices = append(intSlices, iparam)
 	}
 	return
+}
+
+// sliceUniqueString はstringスライスの重複処理
+func sliceUniqueString(target []string) (unique []string) {
+	m := map[string]bool{}
+
+	for _, v := range target {
+		if !m[v] {
+			m[v] = true
+			unique = append(unique, v)
+		}
+	}
+
+	return unique
+}
+
+// sliceUniqueInt はintスライスの重複処理
+func sliceUniqueInt(target []int) (unique []int) {
+	m := map[int]bool{}
+
+	for _, v := range target {
+		if !m[v] {
+			m[v] = true
+			unique = append(unique, v)
+		}
+	}
+
+	return unique
 }
 
 /*
