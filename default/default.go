@@ -11,7 +11,6 @@ import (
 func main() {
 	count, line := paizaGets()
 
-	// fmt.Println(count, line)
 	resList := checker(count, line)
 	for _, res := range resList {
 		fmt.Printf("%v\n", res)

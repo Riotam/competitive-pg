@@ -10,6 +10,7 @@ import (
 var sc = bufio.NewScanner(os.Stdin)
 
 func main() {
+
 	number := getNextInt()
 
 	fmt.Println(checker(number))

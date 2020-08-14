@@ -11,6 +11,7 @@ import (
 var sc = bufio.NewScanner(os.Stdin)
 
 func main() {
+
 	x, y, line := paizaGetsXYAndNumbers()
 
 	resList := checker(x, y, line)
