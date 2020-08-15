@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-// getDivisorListは与えられた数値の約数をリストにして返す。
+// getDivisorListは与えられた数値の約数をリストにして返す
 func getDivisorList(target int) (divisorList []int) {
 	for a := 1; a*a <= target; a++ {
 		if target%a != 0 {
@@ -23,7 +23,7 @@ func getDivisorList(target int) (divisorList []int) {
 	return sliceUniqueInt(divisorList)
 }
 
-// getSumDigits は与えられた数値の各桁の和を求めて返す。
+// getSumDigits は与えられた数値の各桁の和を求めて返す
 func getSumDigits(number int) int {
 	remainder := 0
 	sum := 0
@@ -41,7 +41,7 @@ func getSortDesc(slice []int) []int {
 	return slice
 }
 
-// getSliceIntBySliceString は与えられた文字列スライスを数値スライスに変換して返す。
+// getSliceIntBySliceString は与えられた文字列スライスを数値スライスに変換して返す
 func getSliceIntBySliceString(strings []string) []int {
 	var numbers []int
 	for _, s := range strings {
@@ -51,7 +51,7 @@ func getSliceIntBySliceString(strings []string) []int {
 	return numbers
 }
 
-// reverseString は与えられた文字列を逆さ文字にして返す。
+// reverseString は与えられた文字列を逆さ文字にして返す
 func reverseString(s string) string {
 	runes := []rune(s)
 	for i, j := 0, len(runes)-1; i < j; i, j = i+1, j-1 {
@@ -245,7 +245,7 @@ func paizaGets() (count int, line []string) {
 		} else {
 			line = append(line, strings.TrimSpace(str))
 		}
-		n += 1
+		n++
 
 		if n >= count {
 			break
@@ -266,23 +266,23 @@ func paizaGetNums() (intReturned []int) {
 	return
 }
 
-// paizaGetWordList  は文字列取得・複数単語
-func paizaGetWordList() (stringReturned []string) {
-	scanner := bufio.NewScanner(os.Stdin)
-
-	scanner.Scan()
-	str := scanner.Text()
-	stringReturned = splitWithoutEmpty(str, " ")
-
-	return
-}
-
 //  paizaGetWord 文字列取得・1単語
 func paizaGetWord() (stringReturned string) {
 	scanner := bufio.NewScanner(os.Stdin)
 
 	scanner.Scan()
 	stringReturned = scanner.Text()
+
+	return
+}
+
+// paizaGetWordListWithDelim はデリミタで区切られた複数単語の文字列を取得しスライス化する
+func paizaGetWordListWithDelim(delim string) (stringReturned []string) {
+	scanner := bufio.NewScanner(os.Stdin)
+
+	scanner.Scan()
+	str := scanner.Text()
+	stringReturned = splitWithoutEmpty(str, delim)
 
 	return
 }
@@ -297,9 +297,9 @@ func TestPaizaGetWord() {
 	fmt.Println(line)
 }
 
-// TestPaizaGetWordList 1行・文字・複数単語
-func TestPaizaGetWordList() {
-	list := paizaGetWordList()
+// TestPaizaGetWordListWithDelim 1行・文字・複数単語
+func TestPaizaGetWordListWithDelim() {
+	list := paizaGetWordListWithDelim(" ")
 	for _, str := range list {
 		fmt.Println(str)
 	}
